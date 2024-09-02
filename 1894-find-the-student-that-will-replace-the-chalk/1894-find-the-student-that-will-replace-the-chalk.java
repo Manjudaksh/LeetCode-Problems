@@ -9,11 +9,10 @@ class Solution {
         }
         k = k%(int)sum;
         for(int i=0; i<chalk.length; i++){
-            if(k >= chalk[i]){
-                k -= chalk[i];
-            }else{
+            if(k < chalk[i]){
                 return i;
             }
+            k -= chalk[i];
         }
         return 0;
     }
