@@ -1,23 +1,16 @@
 class Solution {
     public int countConsistentStrings(String allowed, String[] words) {
-        boolean[] ch = new boolean[26];
-        for(char c: allowed.toCharArray()){
-            ch[c-'a'] = true;
+        boolean[] s = new boolean[26];
+        for (char c : allowed.toCharArray()) {
+            s[c - 'a'] = true;
         }
-        int count = 0;
-        for(String word:words){
-            boolean isAllowed = true;
-            for(char w: word.toCharArray()){
-                if(!ch[w-'a']){
-                    isAllowed = false;
-                    break;
-                }
-            }
-            if(isAllowed){
-                count++;
+        int ans = 0;
+        for (String w : words) {
+            if (check(w, s)) {
+                ++ans;
             }
         }
-        return count;
+        return ans;
         
         // Set<Character> se = new HashSet<>();
         // for(char ch:allowed.toCharArray()){
@@ -37,5 +30,13 @@ class Solution {
         //     }
         // }
         // return count;
+    }
+    private boolean check(String w, boolean[] s) {
+        for (int i = 0; i < w.length(); ++i) {
+            if (!s[w.charAt(i) - 'a']) {
+                return false;
+            }
+        }
+        return true;
     }
 }
