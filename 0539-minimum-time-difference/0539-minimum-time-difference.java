@@ -14,9 +14,9 @@ class Solution {
         for(int i=0; i<n-1; i++){
             minimum = Math.min(minimum, arr[i+1]-arr[i]);
         }
-        int result = (24*60)-arr[n-1]+arr[0];
-        result = Math.min(result, minimum);
+        // int result = (24*60)-arr[n-1]+arr[0];
+        // result = Math.min(result, minimum);
         
-        return result;
+        return Math.min((24*60)-arr[n-1]+arr[0], minimum);
     }
 }
