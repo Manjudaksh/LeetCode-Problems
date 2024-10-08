@@ -1,15 +1,37 @@
+// class Solution {
+//     public int minSwaps(String s) {
+//         Stack<Character> st = new Stack<>();
+//         for(char ch: s.toCharArray()){
+//             if(ch == '['){
+//                 st.push(ch);
+//             } else{
+//                 if(!st.isEmpty() && st.peek() == '['){
+//                     st.pop();
+//                 }
+//             }
+//         }
+//         return (st.size() + 1)/2;
+//     }
+// }
+
+
 class Solution {
     public int minSwaps(String s) {
-        Stack<Character> st = new Stack<>();
-        for(char ch: s.toCharArray()){
-            if(ch == '['){
-                st.push(ch);
-            } else{
-                if(!st.isEmpty() && st.peek() == '['){
-                    st.pop();
+        char[] ch = new char[s.toCharArray().length];
+        int index = -1;
+        int i = 0;
+        for(char c:s.toCharArray()){
+            if(c == '['){
+                ch[i] = c;
+                i++;
+                index++;
+            }else{
+                if(index >= 0 && ch[index] == '['){
+                    index--;
+                    i--;
                 }
             }
         }
-        return (st.size() + 1)/2;
+        return (i+1)/2;
     }
 }
